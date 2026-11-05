@@ -1,0 +1,31 @@
+{
+  "experiment": "E3",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "train_samples": 8000,
+  "validation_samples": 1000,
+  "lora_rank": 16,
+  "epochs": 3,
+  "completed_steps": 1500,
+  "best_checkpoint": "/content/fleetmind_phase5_E3/checkpoint-500",
+  "best_val_loss": 0.6423447132110596,
+  "validation_history": [
+    {
+      "epoch": 1.0,
+      "step": 500,
+      "val_loss": 0.6423447132110596,
+      "val_token_accuracy": 0.8433657515048981
+    },
+    {
+      "epoch": 2.0,
+      "step": 1000,
+      "val_loss": 0.6728706955909729,
+      "val_token_accuracy": 0.8441381585597992
+    },
+    {
+      "epoch": 3.0,
+      "step": 1500,
+      "val_loss": 0.6885359287261963,
+      "val_token_accuracy": 0.8462450957298279
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "model": "E1",
+  "split": "test",
+  "samples": 2000,
+  "test_sha256": "700f21dc709f0eb40f1fcb323f0fa6ee675e7399c3e9b2fbd77f9f1cf1976473",
+  "A_json_valid": "1000/1000",
+  "A_structure": "1000/1000",
+  "A_field_accuracy": "8000/8000",
+  "A_null_accuracy": "384/384",
+  "A_exact_records": "1000/1000",
+  "B_accuracy": "1000/1000",
+  "B_delayed_F1": 1.0,
+  "B_on_time_F1": 1.0,
+  "B_macro_F1": 1.0,
+  "B_on_time_recall": 1.0,
+  "B_invalid_outputs": 0
+}

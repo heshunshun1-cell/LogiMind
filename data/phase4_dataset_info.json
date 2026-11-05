@@ -1,0 +1,26 @@
+{
+  "project": "FleetMind-LLM",
+  "stage": "Phase 4 / Step 4.1",
+  "source_type": "synthetic",
+  "source_dataset_zip": "Fleetmind_dataset.zip",
+  "phase1_dataset_sha256": "15dae2a83e54a23b5e4297e682438c5a3f29c5f5fbda8951d4394c71273d3f51",
+  "raw_dataset_sha256": "dd171dc31d5d5fed0e010f45a81ded8e404eecff14a78a78702fa8f377457fba",
+  "business_record_selection_seed": 42,
+  "instruction_generation_seeds": {
+    "validation": 1042,
+    "test": 2042
+  },
+  "instruction_counts": {
+    "train": 1600,
+    "validation": 1000,
+    "test": 2000
+  },
+  "business_record_counts": {
+    "train_used_for_training": 800,
+    "validation": 500,
+    "test": 1000
+  },
+  "old_samples_preserved": true,
+  "new_task_A_active_omission_rate": 0.25,
+  "test_policy": "封存；最终模型和评测方案确定后使用"
+}

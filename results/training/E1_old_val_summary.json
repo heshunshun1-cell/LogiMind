@@ -1,0 +1,26 @@
+{
+  "metrics": {
+    "A_json_validity": 1.0,
+    "A_structure_accuracy": 1.0,
+    "A_field_accuracy": 1.0,
+    "A_null_accuracy": 1.0,
+    "B_accuracy": 0.99,
+    "B_macro_f1": 0.9886039886039886,
+    "B_on_time_recall": 0.9696969696969697
+  },
+  "counts": {
+    "A_total": 100,
+    "A_json_valid": 100,
+    "A_structure": 100,
+    "A_fields_total": 800,
+    "A_fields_correct": 800,
+    "B_total": 100,
+    "A_null_total": 40,
+    "A_null_correct": 40
+  },
+  "B_prediction_counts": {
+    "on_time": 32,
+    "delayed": 68
+  },
+  "checkpoint": "/content/fleetmind_phase3_lora/checkpoint-200"
+}

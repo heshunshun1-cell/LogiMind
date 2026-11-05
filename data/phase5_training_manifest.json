@@ -1,0 +1,18 @@
+{
+  "project": "FleetMind-LLM",
+  "phase": "5.1",
+  "source_zip_sha256": "dd171dc31d5d5fed0e010f45a81ded8e404eecff14a78a78702fa8f377457fba",
+  "selection_seed": 5042,
+  "omission_seed": 5043,
+  "training_counts": {
+    "E1": 1600,
+    "E2": 4000,
+    "E3": 8000
+  },
+  "validation_count": 1000,
+  "files_sha256": {
+    "E2_train.jsonl": "ecf1bd2ba3e6c14f0f396cc19c78213b1d532c2a8f646fcf39d9436c2d82876d",
+    "E3_train.jsonl": "de157f196d5e23855620ea0fb526f79a87a3c84b2292bad0ee589750db3f19ad",
+    "val.jsonl": "8223dffee4c4fe557a8a29d116bb3be048b74578b9e01d7ea109ef732f243b4c"
+  }
+}

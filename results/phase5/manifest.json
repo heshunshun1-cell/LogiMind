@@ -1,0 +1,41 @@
+{
+  "project": "FleetMind-LLM",
+  "stage": "Phase 5 final evaluation",
+  "selected_model": "E1",
+  "selection_based_on": "Validation 1,000",
+  "final_test": "2,000 synthetic instructions; evaluated once after selection",
+  "files": {
+    "final_model_selection.json": {
+      "sha256": "13e9224f43a9bf72141fc9a0c5e6c5f6bdb5f305f602cce5a4403b15416e4e4d",
+      "bytes": 2066
+    },
+    "E1_E2_E3_val_metrics.json": {
+      "sha256": "39f8e025d1b6c00b9f09166b51fbc9b0e44f7a5ea88d65b2ad8b7336ebcab061",
+      "bytes": 1109
+    },
+    "E1_final_test_metrics.json": {
+      "sha256": "ab2726fb81d6618593365e80d8e0c168313e3f3af9c4aa0b3ef3ac09be26305f",
+      "bytes": 453
+    },
+    "E2_E3_loss_curves.png": {
+      "sha256": "3ab548798805c8a0b7a0aaf792fc4b8d098b3351980453768198b458394c3cbb",
+      "bytes": 75159
+    },
+    "predictions/E1_val_predictions.jsonl": {
+      "sha256": "543d10a02cb09b21e884f7f75342ae08692317b9a36d2a30eeacdac0c0d1741e",
+      "bytes": 396884
+    },
+    "predictions/E2_val_predictions.jsonl": {
+      "sha256": "2ae920f808b2aceafa4835651fae3153578bb7350c49f3ba8305d1292eee635e",
+      "bytes": 396884
+    },
+    "predictions/E3_val_predictions.jsonl": {
+      "sha256": "898519207a79ab694ee5bc95205180206f2f5610b2b34e440148f7a52ddaef71",
+      "bytes": 396884
+    },
+    "predictions/E1_test_predictions.jsonl": {
+      "sha256": "efc0782e13aaf48a458d78eaf8f4adc26a3cf01fc28d5b9a6c473a13370934ce",
+      "bytes": 794948
+    }
+  }
+}

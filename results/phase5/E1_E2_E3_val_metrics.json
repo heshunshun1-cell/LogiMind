@@ -1,0 +1,44 @@
+[
+  {
+    "experiment": "E1",
+    "A_json_valid": "500/500",
+    "A_structure": "500/500",
+    "A_field_accuracy": "4000/4000",
+    "A_null_accuracy": "197/197",
+    "A_exact_records": "500/500",
+    "B_accuracy": "497/500",
+    "B_delayed_F1": 0.9955,
+    "B_on_time_F1": 0.9908,
+    "B_macro_F1": 0.9932,
+    "B_on_time_recall": 0.9818,
+    "B_invalid_outputs": 0
+  },
+  {
+    "experiment": "E2",
+    "A_json_valid": "500/500",
+    "A_structure": "500/500",
+    "A_field_accuracy": "4000/4000",
+    "A_null_accuracy": "197/197",
+    "A_exact_records": "500/500",
+    "B_accuracy": "497/500",
+    "B_delayed_F1": 0.9955,
+    "B_on_time_F1": 0.9908,
+    "B_macro_F1": 0.9932,
+    "B_on_time_recall": 0.9818,
+    "B_invalid_outputs": 0
+  },
+  {
+    "experiment": "E3",
+    "A_json_valid": "500/500",
+    "A_structure": "500/500",
+    "A_field_accuracy": "4000/4000",
+    "A_null_accuracy": "197/197",
+    "A_exact_records": "500/500",
+    "B_accuracy": "437/500",
+    "B_delayed_F1": 0.8966,
+    "B_on_time_F1": 0.8389,
+    "B_macro_F1": 0.8677,
+    "B_on_time_recall": 0.9939,
+    "B_invalid_outputs": 0
+  }
+]

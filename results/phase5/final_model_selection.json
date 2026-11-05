@@ -1,0 +1,64 @@
+{
+  "selected_experiment": "E1",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "adapter_dir": "/content/fleetmind_phase5_eval/E1/best_adapter",
+  "lora_rank": 16,
+  "train_samples": 1600,
+  "selection_split": "validation",
+  "validation_samples": 1000,
+  "validation_sha256": "8223dffee4c4fe557a8a29d116bb3be048b74578b9e01d7ea109ef732f243b4c",
+  "generation": {
+    "do_sample": false,
+    "enable_thinking": false,
+    "max_new_tokens_A": 192,
+    "max_new_tokens_B": 48
+  },
+  "adapter_config_sha256": "8aa72b5f6f1715a21fdcd1deb77fb0f9275c2c9e759d455341077a7f28bf82f3",
+  "adapter_weights_sha256": "d79625e5b2073e7f7404633e00f784f375f4ea3a1625cfe01c1cbc1a501435aa",
+  "validation_comparison": [
+    {
+      "experiment": "E1",
+      "A_json_valid": "500/500",
+      "A_structure": "500/500",
+      "A_field_accuracy": "4000/4000",
+      "A_null_accuracy": "197/197",
+      "A_exact_records": "500/500",
+      "B_accuracy": "497/500",
+      "B_delayed_F1": 0.9955,
+      "B_on_time_F1": 0.9908,
+      "B_macro_F1": 0.9932,
+      "B_on_time_recall": 0.9818,
+      "B_invalid_outputs": 0
+    },
+    {
+      "experiment": "E2",
+      "A_json_valid": "500/500",
+      "A_structure": "500/500",
+      "A_field_accuracy": "4000/4000",
+      "A_null_accuracy": "197/197",
+      "A_exact_records": "500/500",
+      "B_accuracy": "497/500",
+      "B_delayed_F1": 0.9955,
+      "B_on_time_F1": 0.9908,
+      "B_macro_F1": 0.9932,
+      "B_on_time_recall": 0.9818,
+      "B_invalid_outputs": 0
+    },
+    {
+      "experiment": "E3",
+      "A_json_valid": "500/500",
+      "A_structure": "500/500",
+      "A_field_accuracy": "4000/4000",
+      "A_null_accuracy": "197/197",
+      "A_exact_records": "500/500",
+      "B_accuracy": "437/500",
+      "B_delayed_F1": 0.8966,
+      "B_on_time_F1": 0.8389,
+      "B_macro_F1": 0.8677,
+      "B_on_time_recall": 0.9939,
+      "B_invalid_outputs": 0
+    }
+  ],
+  "selection_reason": "E1 与 E2 的 Val 任务指标持平；E1 使用更少训练数据。E3 的 Task B Accuracy 降至 437/500。",
+  "test_status": "尚未生成预测或评分"
+}

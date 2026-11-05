@@ -1,0 +1,37 @@
+{
+  "project": "FleetMind-LLM",
+  "base_model": "Qwen/Qwen3-0.6B",
+  "base_model_revision": null,
+  "seed": 42,
+  "epochs": 3,
+  "learning_rate": 0.0001,
+  "batch_size": 2,
+  "gradient_accumulation_steps": 8,
+  "warmup_steps": 30,
+  "max_length": 512,
+  "lora_rank": 16,
+  "lora_alpha": 32,
+  "lora_dropout": 0.05,
+  "target_modules": [
+    "q_proj",
+    "k_proj",
+    "v_proj",
+    "o_proj"
+  ],
+  "best_checkpoint": "/content/fleetmind_phase3_lora/checkpoint-200",
+  "best_validation_loss": 0.0005623376928269863,
+  "actual_optimizer_steps": 300,
+  "dataset_sha256": {
+    "train.jsonl": "8a0902e922d37262ee95ef747aa9dfad21150d0dca640e0903609a75f833d95c",
+    "val.jsonl": "d53c8fe8cd9a313cf84f8b135e16117cad4f170d4f654042cb5c55e9de5a5b79"
+  },
+  "packages": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.21.0",
+    "datasets": "4.8.5",
+    "accelerate": "1.15.0",
+    "peft": "0.21.2",
+    "trl": "1.17.1"
+  },
+  "test_set_used": false
+}

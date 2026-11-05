@@ -1,0 +1,1752 @@
+{
+  "project": "FleetMind-LLM",
+  "version": "v1",
+  "source": "https://huggingface.co/datasets/yogape/logistics-operations",
+  "source_type": "synthetic",
+  "seed": 42,
+  "clean_business_records": 84776,
+  "selected_business_records": {
+    "train": 800,
+    "validation": 100,
+    "test": 100
+  },
+  "instruction_counts": {
+    "train": 1600,
+    "validation": 200,
+    "test": 200
+  },
+  "task_A_fields": [
+    "load_id",
+    "truck_id",
+    "origin_city",
+    "destination_city",
+    "revenue_usd",
+    "fuel_used_gallons",
+    "scheduled_delivery",
+    "actual_delivery"
+  ],
+  "task_A_omission_rate": 0.25,
+  "task_A_missing_value": null,
+  "task_B_rule": {
+    "delayed": "actual_delivery > scheduled_delivery",
+    "on_time": "actual_delivery <= scheduled_delivery"
+  },
+  "currency": "USD",
+  "fuel_unit": "gallons",
+  "system_prompt": "你是物流业务数据助手。只依据用户提供的记录完成任务，不编造信息。只输出合法 JSON，不添加解释或 Markdown 代码围栏。",
+  "task_A_instruction": "提取以下字段：load_id, truck_id, origin_city, destination_city, revenue_usd, fuel_used_gallons, scheduled_delivery, actual_delivery。编号、城市和时间使用字符串，收入与耗油量使用数字。时间保留原格式。输入未提供的信息填 null，不要推测。\n\n",
+  "task_B_instruction": "判断记录是否发生交付延误。所有时间使用同一时间口径。实际交付时间晚于计划时间标为 delayed，否则标为 on_time。只输出 {\"delay_label\": \"标签\"}。\n\n",
+  "task_A_templates": {
+    "train": [
+      "运输记录如下：{details}",
+      "本趟业务登记：{details}",
+      "请处理以下运输交接信息：{details}",
+      "收到一份运输业务摘要：{details}"
+    ],
+    "validation": [
+      "以下是待录入系统的运输资料：{details}",
+      "请整理这份业务登记内容：{details}"
+    ],
+    "test": [
+      "运营人员提供了如下运输说明：{details}",
+      "请从这份运输情况记录中读取信息：{details}"
+    ]
+  },
+  "task_B_templates": {
+    "train": [
+      "计划交付时间：{scheduled}；实际交付时间：{actual}。",
+      "这趟运输原定于{scheduled}交付，实际于{actual}交付。",
+      "交付登记：实际时间为{actual}，计划时间为{scheduled}。",
+      "请核对交付记录：计划{scheduled}，实际{actual}。"
+    ],
+    "validation": [
+      "交付记录列明：原计划{scheduled}；实际完成于{actual}。",
+      "请比较本次交付时间：实际为{actual}；约定计划为{scheduled}。"
+    ],
+    "test": [
+      "运营记录记载，计划交付为{scheduled}，实际交付为{actual}。",
+      "本次交付已完成于{actual}，对应计划交付时刻为{scheduled}。"
+    ]
+  },
+  "omission_plans": {
+    "train": {
+      "LOAD00008212": [
+        "scheduled_delivery"
+      ],
+      "LOAD00008135": [],
+      "LOAD00007259": [],
+      "LOAD00038098": [
+        "revenue_usd",
+        "scheduled_delivery"
+      ],
+      "LOAD00011671": [],
+      "LOAD00011065": [],
+      "LOAD00007303": [
+        "revenue_usd",
+        "fuel_used_gallons"
+      ],
+      "LOAD00070873": [],
+      "LOAD00001011": [],
+      "LOAD00038345": [],
+      "LOAD00039710": [],
+      "LOAD00067112": [
+        "truck_id",
+        "origin_city"
+      ],
+      "LOAD00060669": [],
+      "LOAD00074382": [],
+      "LOAD00056995": [],
+      "LOAD00055685": [],
+      "LOAD00014301": [],
+      "LOAD00063588": [],
+      "LOAD00004132": [],
+      "LOAD00059191": [
+        "truck_id"
+      ],
+      "LOAD00033629": [],
+      "LOAD00019608": [],
+      "LOAD00084666": [],
+      "LOAD00051716": [],
+      "LOAD00081806": [],
+      "LOAD00012956": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00085185": [],
+      "LOAD00048940": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00063236": [],
+      "LOAD00036991": [],
+      "LOAD00063423": [
+        "truck_id"
+      ],
+      "LOAD00021837": [],
+      "LOAD00058611": [
+        "scheduled_delivery"
+      ],
+      "LOAD00036492": [],
+      "LOAD00076655": [],
+      "LOAD00045651": [],
+      "LOAD00053125": [],
+      "LOAD00045724": [],
+      "LOAD00038373": [],
+      "LOAD00025549": [],
+      "LOAD00045019": [],
+      "LOAD00011303": [],
+      "LOAD00025199": [],
+      "LOAD00065214": [],
+      "LOAD00018556": [
+        "origin_city"
+      ],
+      "LOAD00081830": [],
+      "LOAD00038295": [
+        "truck_id"
+      ],
+      "LOAD00017908": [],
+      "LOAD00027761": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00020854": [],
+      "LOAD00082833": [],
+      "LOAD00068592": [],
+      "LOAD00076222": [],
+      "LOAD00080405": [],
+      "LOAD00038161": [],
+      "LOAD00013028": [],
+      "LOAD00015964": [],
+      "LOAD00057680": [
+        "destination_city"
+      ],
+      "LOAD00072370": [],
+      "LOAD00070903": [
+        "origin_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00048859": [],
+      "LOAD00044227": [],
+      "LOAD00076542": [],
+      "LOAD00000658": [],
+      "LOAD00043055": [],
+      "LOAD00037054": [
+        "scheduled_delivery"
+      ],
+      "LOAD00067238": [],
+      "LOAD00063865": [
+        "origin_city",
+        "revenue_usd"
+      ],
+      "LOAD00015238": [],
+      "LOAD00058777": [],
+      "LOAD00046181": [
+        "origin_city",
+        "truck_id"
+      ],
+      "LOAD00065701": [
+        "scheduled_delivery"
+      ],
+      "LOAD00021508": [],
+      "LOAD00005323": [
+        "destination_city",
+        "revenue_usd"
+      ],
+      "LOAD00011872": [],
+      "LOAD00014595": [],
+      "LOAD00050356": [],
+      "LOAD00018998": [],
+      "LOAD00052130": [],
+      "LOAD00066435": [],
+      "LOAD00072806": [
+        "revenue_usd",
+        "scheduled_delivery"
+      ],
+      "LOAD00003618": [
+        "scheduled_delivery"
+      ],
+      "LOAD00030449": [],
+      "LOAD00024843": [],
+      "LOAD00077129": [],
+      "LOAD00038809": [],
+      "LOAD00053474": [],
+      "LOAD00071762": [
+        "truck_id"
+      ],
+      "LOAD00021745": [],
+      "LOAD00066804": [
+        "scheduled_delivery",
+        "destination_city"
+      ],
+      "LOAD00018398": [],
+      "LOAD00067629": [],
+      "LOAD00036656": [],
+      "LOAD00051104": [
+        "origin_city"
+      ],
+      "LOAD00002767": [
+        "origin_city"
+      ],
+      "LOAD00068864": [
+        "origin_city",
+        "revenue_usd"
+      ],
+      "LOAD00012148": [],
+      "LOAD00074618": [],
+      "LOAD00001503": [],
+      "LOAD00049429": [
+        "destination_city"
+      ],
+      "LOAD00042759": [],
+      "LOAD00019818": [],
+      "LOAD00033311": [],
+      "LOAD00068294": [
+        "origin_city",
+        "truck_id"
+      ],
+      "LOAD00084740": [
+        "actual_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00058732": [],
+      "LOAD00045206": [],
+      "LOAD00019371": [],
+      "LOAD00011928": [
+        "truck_id"
+      ],
+      "LOAD00073627": [],
+      "LOAD00026014": [],
+      "LOAD00053980": [],
+      "LOAD00018487": [
+        "truck_id"
+      ],
+      "LOAD00080617": [],
+      "LOAD00013936": [
+        "origin_city"
+      ],
+      "LOAD00009926": [],
+      "LOAD00080033": [],
+      "LOAD00053467": [
+        "revenue_usd",
+        "actual_delivery"
+      ],
+      "LOAD00052840": [],
+      "LOAD00015183": [],
+      "LOAD00082148": [],
+      "LOAD00051957": [],
+      "LOAD00064706": [],
+      "LOAD00010813": [],
+      "LOAD00000870": [],
+      "LOAD00084145": [],
+      "LOAD00040435": [],
+      "LOAD00077006": [
+        "actual_delivery"
+      ],
+      "LOAD00045726": [
+        "truck_id",
+        "origin_city"
+      ],
+      "LOAD00067822": [],
+      "LOAD00015720": [],
+      "LOAD00005138": [
+        "truck_id",
+        "revenue_usd"
+      ],
+      "LOAD00043636": [],
+      "LOAD00027140": [],
+      "LOAD00028410": [],
+      "LOAD00030595": [],
+      "LOAD00012879": [],
+      "LOAD00041590": [],
+      "LOAD00065744": [],
+      "LOAD00081064": [],
+      "LOAD00063300": [],
+      "LOAD00038844": [
+        "actual_delivery",
+        "revenue_usd"
+      ],
+      "LOAD00020333": [
+        "revenue_usd",
+        "scheduled_delivery"
+      ],
+      "LOAD00046193": [],
+      "LOAD00025374": [],
+      "LOAD00057431": [],
+      "LOAD00062731": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00036709": [],
+      "LOAD00057202": [],
+      "LOAD00008020": [],
+      "LOAD00043508": [],
+      "LOAD00075299": [],
+      "LOAD00039134": [],
+      "LOAD00036052": [],
+      "LOAD00015518": [],
+      "LOAD00078542": [],
+      "LOAD00037345": [
+        "origin_city",
+        "truck_id"
+      ],
+      "LOAD00045602": [],
+      "LOAD00011089": [],
+      "LOAD00057317": [
+        "scheduled_delivery"
+      ],
+      "LOAD00061822": [],
+      "LOAD00080909": [
+        "truck_id",
+        "actual_delivery"
+      ],
+      "LOAD00023117": [],
+      "LOAD00081843": [
+        "fuel_used_gallons",
+        "actual_delivery"
+      ],
+      "LOAD00043908": [],
+      "LOAD00004290": [
+        "truck_id"
+      ],
+      "LOAD00065965": [
+        "actual_delivery"
+      ],
+      "LOAD00019770": [
+        "truck_id"
+      ],
+      "LOAD00037203": [],
+      "LOAD00051442": [
+        "scheduled_delivery"
+      ],
+      "LOAD00072474": [],
+      "LOAD00036801": [],
+      "LOAD00023070": [],
+      "LOAD00042851": [],
+      "LOAD00082242": [],
+      "LOAD00064758": [
+        "revenue_usd"
+      ],
+      "LOAD00009739": [],
+      "LOAD00042619": [],
+      "LOAD00016541": [],
+      "LOAD00025619": [],
+      "LOAD00074321": [],
+      "LOAD00053078": [],
+      "LOAD00005468": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00001152": [],
+      "LOAD00056122": [],
+      "LOAD00048421": [],
+      "LOAD00021690": [],
+      "LOAD00050237": [],
+      "LOAD00014140": [],
+      "LOAD00038439": [],
+      "LOAD00019200": [],
+      "LOAD00055141": [],
+      "LOAD00084437": [],
+      "LOAD00044598": [],
+      "LOAD00072188": [],
+      "LOAD00046205": [],
+      "LOAD00064972": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00045201": [],
+      "LOAD00054963": [],
+      "LOAD00071094": [],
+      "LOAD00026742": [],
+      "LOAD00079181": [],
+      "LOAD00067210": [],
+      "LOAD00049993": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00003676": [],
+      "LOAD00051755": [],
+      "LOAD00030493": [],
+      "LOAD00055762": [],
+      "LOAD00083432": [],
+      "LOAD00055572": [],
+      "LOAD00055389": [],
+      "LOAD00084498": [],
+      "LOAD00082230": [],
+      "LOAD00047010": [],
+      "LOAD00031949": [
+        "revenue_usd"
+      ],
+      "LOAD00052644": [],
+      "LOAD00021849": [
+        "destination_city",
+        "origin_city"
+      ],
+      "LOAD00005140": [
+        "origin_city",
+        "destination_city"
+      ],
+      "LOAD00055829": [],
+      "LOAD00008822": [],
+      "LOAD00030017": [
+        "origin_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00045128": [],
+      "LOAD00079536": [],
+      "LOAD00015052": [
+        "revenue_usd",
+        "destination_city"
+      ],
+      "LOAD00080269": [
+        "truck_id"
+      ],
+      "LOAD00085023": [
+        "fuel_used_gallons",
+        "actual_delivery"
+      ],
+      "LOAD00029444": [],
+      "LOAD00075238": [],
+      "LOAD00012002": [
+        "truck_id"
+      ],
+      "LOAD00072558": [],
+      "LOAD00019254": [],
+      "LOAD00032930": [],
+      "LOAD00026134": [],
+      "LOAD00023124": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00008881": [
+        "origin_city",
+        "destination_city"
+      ],
+      "LOAD00054461": [],
+      "LOAD00041630": [],
+      "LOAD00039263": [],
+      "LOAD00031505": [
+        "origin_city"
+      ],
+      "LOAD00039213": [],
+      "LOAD00079544": [],
+      "LOAD00014203": [],
+      "LOAD00035108": [],
+      "LOAD00075727": [],
+      "LOAD00006042": [],
+      "LOAD00006659": [
+        "destination_city",
+        "origin_city"
+      ],
+      "LOAD00014942": [
+        "actual_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00040449": [],
+      "LOAD00040416": [],
+      "LOAD00061479": [],
+      "LOAD00001301": [
+        "fuel_used_gallons",
+        "scheduled_delivery"
+      ],
+      "LOAD00008145": [],
+      "LOAD00005173": [
+        "scheduled_delivery"
+      ],
+      "LOAD00052334": [],
+      "LOAD00044941": [],
+      "LOAD00043137": [],
+      "LOAD00085406": [],
+      "LOAD00035632": [
+        "scheduled_delivery",
+        "truck_id"
+      ],
+      "LOAD00045292": [],
+      "LOAD00054984": [],
+      "LOAD00049070": [],
+      "LOAD00001368": [],
+      "LOAD00034455": [],
+      "LOAD00007651": [],
+      "LOAD00057502": [],
+      "LOAD00035432": [],
+      "LOAD00063413": [],
+      "LOAD00078418": [],
+      "LOAD00023335": [],
+      "LOAD00036918": [
+        "destination_city"
+      ],
+      "LOAD00020017": [
+        "truck_id"
+      ],
+      "LOAD00048866": [
+        "destination_city"
+      ],
+      "LOAD00053664": [],
+      "LOAD00069399": [
+        "fuel_used_gallons",
+        "origin_city"
+      ],
+      "LOAD00072103": [
+        "origin_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00003299": [],
+      "LOAD00032170": [
+        "fuel_used_gallons",
+        "revenue_usd"
+      ],
+      "LOAD00072335": [],
+      "LOAD00010693": [],
+      "LOAD00072223": [],
+      "LOAD00073145": [],
+      "LOAD00022746": [
+        "actual_delivery",
+        "truck_id"
+      ],
+      "LOAD00024972": [],
+      "LOAD00043702": [],
+      "LOAD00021358": [
+        "scheduled_delivery"
+      ],
+      "LOAD00010995": [],
+      "LOAD00058781": [],
+      "LOAD00081651": [],
+      "LOAD00021894": [],
+      "LOAD00050158": [],
+      "LOAD00036529": [],
+      "LOAD00064793": [],
+      "LOAD00030556": [],
+      "LOAD00027775": [],
+      "LOAD00047075": [],
+      "LOAD00070957": [],
+      "LOAD00036719": [
+        "actual_delivery",
+        "destination_city"
+      ],
+      "LOAD00032885": [],
+      "LOAD00040152": [],
+      "LOAD00069099": [],
+      "LOAD00021216": [
+        "truck_id"
+      ],
+      "LOAD00000666": [],
+      "LOAD00002694": [],
+      "LOAD00047860": [],
+      "LOAD00039218": [],
+      "LOAD00005455": [
+        "actual_delivery",
+        "origin_city"
+      ],
+      "LOAD00071895": [],
+      "LOAD00084266": [],
+      "LOAD00011133": [],
+      "LOAD00068350": [],
+      "LOAD00060423": [],
+      "LOAD00075103": [],
+      "LOAD00017656": [],
+      "LOAD00030236": [],
+      "LOAD00041581": [
+        "origin_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00043793": [],
+      "LOAD00059447": [],
+      "LOAD00053728": [],
+      "LOAD00012479": [],
+      "LOAD00040583": [],
+      "LOAD00058029": [],
+      "LOAD00011365": [],
+      "LOAD00064499": [
+        "fuel_used_gallons",
+        "scheduled_delivery"
+      ],
+      "LOAD00083008": [
+        "fuel_used_gallons",
+        "truck_id"
+      ],
+      "LOAD00080567": [],
+      "LOAD00034352": [],
+      "LOAD00006566": [],
+      "LOAD00017829": [],
+      "LOAD00037298": [],
+      "LOAD00004886": [],
+      "LOAD00026381": [],
+      "LOAD00031377": [
+        "truck_id"
+      ],
+      "LOAD00014384": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00041165": [],
+      "LOAD00054510": [],
+      "LOAD00003841": [],
+      "LOAD00076427": [],
+      "LOAD00072580": [],
+      "LOAD00083290": [],
+      "LOAD00078230": [],
+      "LOAD00042168": [],
+      "LOAD00060525": [],
+      "LOAD00015789": [],
+      "LOAD00033468": [],
+      "LOAD00065750": [
+        "actual_delivery"
+      ],
+      "LOAD00055735": [],
+      "LOAD00075623": [],
+      "LOAD00077005": [],
+      "LOAD00041571": [
+        "fuel_used_gallons",
+        "actual_delivery"
+      ],
+      "LOAD00025933": [],
+      "LOAD00036316": [],
+      "LOAD00073924": [],
+      "LOAD00041315": [
+        "revenue_usd"
+      ],
+      "LOAD00017948": [],
+      "LOAD00034711": [],
+      "LOAD00080029": [],
+      "LOAD00067126": [],
+      "LOAD00071399": [],
+      "LOAD00067225": [],
+      "LOAD00013033": [],
+      "LOAD00074253": [],
+      "LOAD00083047": [],
+      "LOAD00030679": [],
+      "LOAD00022054": [
+        "truck_id"
+      ],
+      "LOAD00021891": [],
+      "LOAD00053921": [],
+      "LOAD00061608": [],
+      "LOAD00064501": [
+        "destination_city",
+        "truck_id"
+      ],
+      "LOAD00063331": [],
+      "LOAD00010759": [],
+      "LOAD00066219": [
+        "origin_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00055089": [
+        "scheduled_delivery"
+      ],
+      "LOAD00055150": [],
+      "LOAD00056617": [
+        "destination_city"
+      ],
+      "LOAD00042767": [],
+      "LOAD00054947": [],
+      "LOAD00081441": [],
+      "LOAD00066034": [],
+      "LOAD00065986": [],
+      "LOAD00003783": [
+        "fuel_used_gallons",
+        "scheduled_delivery"
+      ],
+      "LOAD00019856": [],
+      "LOAD00028586": [],
+      "LOAD00007751": [
+        "origin_city"
+      ],
+      "LOAD00064654": [],
+      "LOAD00018473": [],
+      "LOAD00082779": [],
+      "LOAD00022201": [],
+      "LOAD00065493": [
+        "actual_delivery"
+      ],
+      "LOAD00066661": [
+        "revenue_usd"
+      ],
+      "LOAD00078086": [
+        "origin_city"
+      ],
+      "LOAD00056618": [
+        "actual_delivery",
+        "revenue_usd"
+      ],
+      "LOAD00011177": [],
+      "LOAD00020250": [],
+      "LOAD00022274": [],
+      "LOAD00019118": [
+        "destination_city"
+      ],
+      "LOAD00022786": [],
+      "LOAD00043306": [],
+      "LOAD00009184": [],
+      "LOAD00034504": [],
+      "LOAD00059287": [],
+      "LOAD00070070": [],
+      "LOAD00027351": [],
+      "LOAD00015069": [],
+      "LOAD00047138": [],
+      "LOAD00080578": [],
+      "LOAD00062092": [
+        "actual_delivery"
+      ],
+      "LOAD00025839": [],
+      "LOAD00068468": [],
+      "LOAD00031976": [
+        "revenue_usd"
+      ],
+      "LOAD00066117": [],
+      "LOAD00032134": [
+        "actual_delivery"
+      ],
+      "LOAD00075648": [],
+      "LOAD00083769": [],
+      "LOAD00078136": [],
+      "LOAD00009324": [],
+      "LOAD00032382": [],
+      "LOAD00071554": [],
+      "LOAD00000654": [],
+      "LOAD00065404": [],
+      "LOAD00022329": [],
+      "LOAD00049634": [],
+      "LOAD00043105": [],
+      "LOAD00059966": [],
+      "LOAD00018440": [],
+      "LOAD00056514": [],
+      "LOAD00053051": [],
+      "LOAD00059112": [],
+      "LOAD00064277": [],
+      "LOAD00030327": [],
+      "LOAD00019098": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00052886": [],
+      "LOAD00010012": [],
+      "LOAD00062856": [
+        "destination_city",
+        "actual_delivery"
+      ],
+      "LOAD00009294": [
+        "origin_city"
+      ],
+      "LOAD00021405": [],
+      "LOAD00043445": [],
+      "LOAD00015017": [],
+      "LOAD00031047": [],
+      "LOAD00065828": [
+        "scheduled_delivery"
+      ],
+      "LOAD00015265": [],
+      "LOAD00075672": [],
+      "LOAD00003974": [],
+      "LOAD00049136": [],
+      "LOAD00065962": [],
+      "LOAD00047821": [],
+      "LOAD00013407": [
+        "revenue_usd"
+      ],
+      "LOAD00022757": [],
+      "LOAD00036975": [],
+      "LOAD00047392": [],
+      "LOAD00081251": [],
+      "LOAD00000663": [],
+      "LOAD00045952": [],
+      "LOAD00072673": [],
+      "LOAD00056560": [],
+      "LOAD00079853": [],
+      "LOAD00044086": [],
+      "LOAD00030422": [],
+      "LOAD00033134": [],
+      "LOAD00009585": [],
+      "LOAD00061195": [
+        "destination_city",
+        "truck_id"
+      ],
+      "LOAD00055954": [],
+      "LOAD00052320": [],
+      "LOAD00056068": [],
+      "LOAD00004329": [],
+      "LOAD00009049": [
+        "destination_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00016533": [],
+      "LOAD00007592": [],
+      "LOAD00021380": [],
+      "LOAD00071202": [],
+      "LOAD00014720": [
+        "scheduled_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00079334": [
+        "truck_id",
+        "actual_delivery"
+      ],
+      "LOAD00058745": [],
+      "LOAD00036873": [],
+      "LOAD00040629": [
+        "origin_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00021389": [],
+      "LOAD00012940": [],
+      "LOAD00036888": [],
+      "LOAD00057850": [],
+      "LOAD00021307": [],
+      "LOAD00049261": [
+        "truck_id",
+        "actual_delivery"
+      ],
+      "LOAD00067335": [],
+      "LOAD00068927": [],
+      "LOAD00068418": [],
+      "LOAD00002840": [],
+      "LOAD00075027": [],
+      "LOAD00070329": [],
+      "LOAD00035479": [
+        "destination_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00020816": [],
+      "LOAD00057147": [],
+      "LOAD00039404": [],
+      "LOAD00048809": [],
+      "LOAD00025082": [],
+      "LOAD00043230": [],
+      "LOAD00061869": [],
+      "LOAD00084580": [],
+      "LOAD00009945": [],
+      "LOAD00069752": [],
+      "LOAD00021998": [
+        "revenue_usd",
+        "fuel_used_gallons"
+      ],
+      "LOAD00054987": [],
+      "LOAD00019707": [],
+      "LOAD00022800": [
+        "revenue_usd"
+      ],
+      "LOAD00043384": [],
+      "LOAD00024327": [],
+      "LOAD00023677": [],
+      "LOAD00067000": [],
+      "LOAD00027456": [
+        "destination_city"
+      ],
+      "LOAD00028063": [],
+      "LOAD00061774": [],
+      "LOAD00046951": [],
+      "LOAD00001065": [],
+      "LOAD00037271": [],
+      "LOAD00019988": [
+        "scheduled_delivery"
+      ],
+      "LOAD00069302": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00006232": [],
+      "LOAD00025435": [],
+      "LOAD00079145": [],
+      "LOAD00040670": [],
+      "LOAD00083471": [
+        "destination_city"
+      ],
+      "LOAD00063623": [],
+      "LOAD00055940": [
+        "truck_id",
+        "scheduled_delivery"
+      ],
+      "LOAD00069575": [],
+      "LOAD00025480": [
+        "fuel_used_gallons",
+        "destination_city"
+      ],
+      "LOAD00003346": [],
+      "LOAD00066129": [],
+      "LOAD00043016": [],
+      "LOAD00062733": [],
+      "LOAD00043559": [],
+      "LOAD00007474": [],
+      "LOAD00017266": [],
+      "LOAD00077982": [],
+      "LOAD00064090": [],
+      "LOAD00008014": [],
+      "LOAD00082799": [],
+      "LOAD00071638": [],
+      "LOAD00067298": [],
+      "LOAD00038693": [],
+      "LOAD00039079": [],
+      "LOAD00074067": [],
+      "LOAD00004737": [],
+      "LOAD00021478": [],
+      "LOAD00059434": [
+        "scheduled_delivery"
+      ],
+      "LOAD00016776": [
+        "fuel_used_gallons",
+        "destination_city"
+      ],
+      "LOAD00076435": [],
+      "LOAD00028545": [
+        "destination_city",
+        "revenue_usd"
+      ],
+      "LOAD00013898": [],
+      "LOAD00032457": [
+        "fuel_used_gallons",
+        "origin_city"
+      ],
+      "LOAD00014598": [
+        "revenue_usd"
+      ],
+      "LOAD00060658": [],
+      "LOAD00076348": [],
+      "LOAD00024230": [
+        "scheduled_delivery",
+        "actual_delivery"
+      ],
+      "LOAD00056535": [],
+      "LOAD00071607": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00072356": [
+        "revenue_usd",
+        "fuel_used_gallons"
+      ],
+      "LOAD00034058": [],
+      "LOAD00010573": [],
+      "LOAD00041406": [],
+      "LOAD00026986": [],
+      "LOAD00076669": [],
+      "LOAD00030306": [
+        "destination_city"
+      ],
+      "LOAD00056920": [],
+      "LOAD00014147": [],
+      "LOAD00085055": [],
+      "LOAD00056188": [
+        "origin_city",
+        "revenue_usd"
+      ],
+      "LOAD00058470": [],
+      "LOAD00054043": [],
+      "LOAD00021008": [
+        "revenue_usd",
+        "actual_delivery"
+      ],
+      "LOAD00027398": [
+        "scheduled_delivery",
+        "origin_city"
+      ],
+      "LOAD00075662": [],
+      "LOAD00008967": [],
+      "LOAD00030492": [],
+      "LOAD00057497": [
+        "actual_delivery",
+        "scheduled_delivery"
+      ],
+      "LOAD00079072": [],
+      "LOAD00006584": [],
+      "LOAD00077012": [],
+      "LOAD00013454": [
+        "scheduled_delivery"
+      ],
+      "LOAD00006285": [],
+      "LOAD00020217": [],
+      "LOAD00038107": [],
+      "LOAD00079620": [],
+      "LOAD00000360": [],
+      "LOAD00063744": [
+        "destination_city"
+      ],
+      "LOAD00023149": [],
+      "LOAD00040894": [],
+      "LOAD00028051": [],
+      "LOAD00033819": [],
+      "LOAD00023202": [],
+      "LOAD00077675": [],
+      "LOAD00079336": [],
+      "LOAD00055639": [],
+      "LOAD00044593": [],
+      "LOAD00012845": [],
+      "LOAD00063190": [
+        "truck_id",
+        "origin_city"
+      ],
+      "LOAD00056686": [],
+      "LOAD00012991": [],
+      "LOAD00074106": [],
+      "LOAD00019385": [],
+      "LOAD00054830": [],
+      "LOAD00036011": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00082786": [
+        "truck_id"
+      ],
+      "LOAD00072202": [],
+      "LOAD00084593": [],
+      "LOAD00056885": [],
+      "LOAD00004777": [],
+      "LOAD00021342": [
+        "origin_city"
+      ],
+      "LOAD00043453": [
+        "fuel_used_gallons",
+        "truck_id"
+      ],
+      "LOAD00052177": [],
+      "LOAD00050215": [],
+      "LOAD00002660": [],
+      "LOAD00025375": [],
+      "LOAD00039247": [],
+      "LOAD00062834": [
+        "revenue_usd",
+        "scheduled_delivery"
+      ],
+      "LOAD00064634": [],
+      "LOAD00068291": [],
+      "LOAD00005645": [
+        "scheduled_delivery"
+      ],
+      "LOAD00076632": [],
+      "LOAD00022752": [],
+      "LOAD00068255": [
+        "revenue_usd",
+        "actual_delivery"
+      ],
+      "LOAD00058358": [],
+      "LOAD00071579": [
+        "origin_city"
+      ],
+      "LOAD00001462": [],
+      "LOAD00052137": [],
+      "LOAD00057581": [],
+      "LOAD00056175": [],
+      "LOAD00022200": [
+        "actual_delivery"
+      ],
+      "LOAD00065781": [],
+      "LOAD00011088": [],
+      "LOAD00017407": [],
+      "LOAD00071942": [],
+      "LOAD00023659": [],
+      "LOAD00039793": [],
+      "LOAD00045796": [],
+      "LOAD00017834": [],
+      "LOAD00074674": [],
+      "LOAD00054822": [
+        "actual_delivery"
+      ],
+      "LOAD00004352": [],
+      "LOAD00052931": [],
+      "LOAD00085232": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00017389": [],
+      "LOAD00011621": [],
+      "LOAD00010473": [],
+      "LOAD00004489": [],
+      "LOAD00073439": [],
+      "LOAD00001064": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00074565": [
+        "actual_delivery"
+      ],
+      "LOAD00049109": [],
+      "LOAD00065919": [
+        "revenue_usd"
+      ],
+      "LOAD00006741": [],
+      "LOAD00064510": [],
+      "LOAD00053375": [],
+      "LOAD00073220": [],
+      "LOAD00052714": [
+        "actual_delivery"
+      ],
+      "LOAD00022236": [],
+      "LOAD00072976": [],
+      "LOAD00064446": [],
+      "LOAD00056007": [
+        "scheduled_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00077692": [
+        "actual_delivery",
+        "revenue_usd"
+      ],
+      "LOAD00038310": [],
+      "LOAD00020546": [],
+      "LOAD00024417": [
+        "actual_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00060661": [
+        "origin_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00023993": [],
+      "LOAD00070319": [],
+      "LOAD00020716": [],
+      "LOAD00007848": [
+        "revenue_usd",
+        "destination_city"
+      ],
+      "LOAD00013922": [],
+      "LOAD00002687": [
+        "actual_delivery"
+      ],
+      "LOAD00008618": [],
+      "LOAD00012071": [],
+      "LOAD00020566": [],
+      "LOAD00024082": [],
+      "LOAD00036728": [],
+      "LOAD00074053": [
+        "actual_delivery",
+        "fuel_used_gallons"
+      ],
+      "LOAD00083492": [],
+      "LOAD00085255": [],
+      "LOAD00078124": [],
+      "LOAD00066841": [],
+      "LOAD00054122": [
+        "scheduled_delivery",
+        "origin_city"
+      ],
+      "LOAD00025085": [
+        "revenue_usd",
+        "truck_id"
+      ],
+      "LOAD00055794": [],
+      "LOAD00050025": [],
+      "LOAD00045436": [],
+      "LOAD00060490": [
+        "origin_city",
+        "destination_city"
+      ],
+      "LOAD00071149": [],
+      "LOAD00067503": [],
+      "LOAD00015961": [],
+      "LOAD00065641": [],
+      "LOAD00077660": [
+        "destination_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00061959": [],
+      "LOAD00042315": [],
+      "LOAD00058920": [],
+      "LOAD00037493": [
+        "origin_city"
+      ],
+      "LOAD00039080": [
+        "origin_city"
+      ],
+      "LOAD00025525": [
+        "scheduled_delivery",
+        "origin_city"
+      ],
+      "LOAD00079911": [],
+      "LOAD00019790": [],
+      "LOAD00045630": [],
+      "LOAD00007965": [],
+      "LOAD00079175": [],
+      "LOAD00064008": [],
+      "LOAD00002738": [
+        "truck_id"
+      ],
+      "LOAD00033411": [
+        "revenue_usd",
+        "destination_city"
+      ],
+      "LOAD00023909": [],
+      "LOAD00078713": [],
+      "LOAD00026165": [],
+      "LOAD00083435": [],
+      "LOAD00003596": [],
+      "LOAD00056211": [],
+      "LOAD00007529": [],
+      "LOAD00023644": [],
+      "LOAD00004469": [],
+      "LOAD00064628": [],
+      "LOAD00035759": [
+        "revenue_usd",
+        "truck_id"
+      ],
+      "LOAD00018041": [],
+      "LOAD00022388": [
+        "actual_delivery"
+      ],
+      "LOAD00021621": [
+        "revenue_usd",
+        "fuel_used_gallons"
+      ],
+      "LOAD00054488": [
+        "actual_delivery"
+      ],
+      "LOAD00017743": [],
+      "LOAD00075320": [],
+      "LOAD00042962": [
+        "revenue_usd",
+        "truck_id"
+      ],
+      "LOAD00015906": [],
+      "LOAD00079294": [],
+      "LOAD00013062": [
+        "destination_city",
+        "revenue_usd"
+      ],
+      "LOAD00079167": [
+        "fuel_used_gallons",
+        "scheduled_delivery"
+      ],
+      "LOAD00032358": [
+        "revenue_usd"
+      ],
+      "LOAD00051590": [],
+      "LOAD00020290": [],
+      "LOAD00062147": [],
+      "LOAD00006010": [],
+      "LOAD00018327": [],
+      "LOAD00033967": [],
+      "LOAD00037820": [],
+      "LOAD00044446": [],
+      "LOAD00034965": [],
+      "LOAD00004340": [
+        "destination_city"
+      ],
+      "LOAD00019613": [],
+      "LOAD00071230": [],
+      "LOAD00004081": [],
+      "LOAD00049083": [
+        "revenue_usd",
+        "truck_id"
+      ],
+      "LOAD00032877": [],
+      "LOAD00039922": [],
+      "LOAD00071355": [
+        "destination_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00047625": [],
+      "LOAD00042521": [
+        "scheduled_delivery",
+        "origin_city"
+      ],
+      "LOAD00060182": [],
+      "LOAD00063617": [],
+      "LOAD00083918": [
+        "origin_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00037667": [],
+      "LOAD00013168": [],
+      "LOAD00067566": [],
+      "LOAD00055015": [],
+      "LOAD00064296": [],
+      "LOAD00001996": [],
+      "LOAD00017611": [],
+      "LOAD00082500": [
+        "revenue_usd"
+      ],
+      "LOAD00034523": [
+        "truck_id"
+      ],
+      "LOAD00077742": [],
+      "LOAD00053141": [],
+      "LOAD00061758": [],
+      "LOAD00004801": [
+        "origin_city",
+        "revenue_usd"
+      ],
+      "LOAD00053256": [
+        "truck_id"
+      ],
+      "LOAD00061081": [
+        "revenue_usd",
+        "destination_city"
+      ],
+      "LOAD00029663": [
+        "revenue_usd"
+      ],
+      "LOAD00066555": [],
+      "LOAD00060095": [
+        "destination_city",
+        "revenue_usd"
+      ],
+      "LOAD00019916": [],
+      "LOAD00004342": [
+        "actual_delivery",
+        "revenue_usd"
+      ],
+      "LOAD00050807": [],
+      "LOAD00018155": [],
+      "LOAD00014106": [],
+      "LOAD00034887": [],
+      "LOAD00064833": [],
+      "LOAD00057083": [],
+      "LOAD00065520": [],
+      "LOAD00058511": [],
+      "LOAD00064215": [
+        "actual_delivery",
+        "truck_id"
+      ],
+      "LOAD00031886": [
+        "truck_id",
+        "scheduled_delivery"
+      ],
+      "LOAD00047027": [],
+      "LOAD00062319": [],
+      "LOAD00017670": [],
+      "LOAD00039203": [
+        "destination_city"
+      ],
+      "LOAD00085310": [],
+      "LOAD00030558": [],
+      "LOAD00054129": [],
+      "LOAD00041022": [
+        "scheduled_delivery"
+      ],
+      "LOAD00001811": [
+        "actual_delivery"
+      ],
+      "LOAD00040636": [],
+      "LOAD00025720": [],
+      "LOAD00004983": [
+        "actual_delivery"
+      ],
+      "LOAD00002555": [],
+      "LOAD00047231": [],
+      "LOAD00035354": [
+        "origin_city"
+      ],
+      "LOAD00076765": [],
+      "LOAD00022684": [
+        "actual_delivery"
+      ],
+      "LOAD00024106": [],
+      "LOAD00046601": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00060675": [],
+      "LOAD00014431": [
+        "origin_city"
+      ],
+      "LOAD00078553": [],
+      "LOAD00018324": [
+        "revenue_usd"
+      ],
+      "LOAD00067969": []
+    },
+    "validation": {
+      "LOAD00082237": [],
+      "LOAD00016195": [],
+      "LOAD00019804": [
+        "revenue_usd"
+      ],
+      "LOAD00019049": [],
+      "LOAD00054722": [
+        "truck_id"
+      ],
+      "LOAD00054867": [],
+      "LOAD00023538": [],
+      "LOAD00003202": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00003026": [],
+      "LOAD00031747": [],
+      "LOAD00081380": [],
+      "LOAD00028326": [],
+      "LOAD00003564": [
+        "origin_city",
+        "revenue_usd"
+      ],
+      "LOAD00066162": [
+        "fuel_used_gallons",
+        "origin_city"
+      ],
+      "LOAD00004673": [],
+      "LOAD00073946": [],
+      "LOAD00049810": [],
+      "LOAD00047153": [],
+      "LOAD00031069": [
+        "truck_id",
+        "actual_delivery"
+      ],
+      "LOAD00007756": [],
+      "LOAD00002986": [],
+      "LOAD00046143": [],
+      "LOAD00028128": [
+        "origin_city"
+      ],
+      "LOAD00081593": [],
+      "LOAD00052090": [],
+      "LOAD00068702": [],
+      "LOAD00007685": [],
+      "LOAD00072902": [],
+      "LOAD00015934": [],
+      "LOAD00029179": [],
+      "LOAD00056734": [],
+      "LOAD00052790": [],
+      "LOAD00046174": [],
+      "LOAD00014662": [],
+      "LOAD00065617": [],
+      "LOAD00010327": [],
+      "LOAD00010465": [
+        "actual_delivery"
+      ],
+      "LOAD00048565": [],
+      "LOAD00076804": [],
+      "LOAD00039198": [],
+      "LOAD00080173": [],
+      "LOAD00016149": [],
+      "LOAD00042617": [],
+      "LOAD00062516": [],
+      "LOAD00079363": [],
+      "LOAD00006331": [],
+      "LOAD00043880": [],
+      "LOAD00031213": [
+        "destination_city"
+      ],
+      "LOAD00055778": [],
+      "LOAD00018415": [],
+      "LOAD00056821": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00000169": [],
+      "LOAD00044992": [],
+      "LOAD00006070": [],
+      "LOAD00003351": [],
+      "LOAD00080514": [
+        "actual_delivery"
+      ],
+      "LOAD00068935": [],
+      "LOAD00027097": [],
+      "LOAD00083189": [
+        "truck_id"
+      ],
+      "LOAD00043852": [
+        "actual_delivery",
+        "scheduled_delivery"
+      ],
+      "LOAD00050794": [],
+      "LOAD00003048": [],
+      "LOAD00046232": [],
+      "LOAD00066512": [
+        "destination_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00018231": [],
+      "LOAD00017267": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00032951": [],
+      "LOAD00074913": [],
+      "LOAD00063879": [],
+      "LOAD00046393": [],
+      "LOAD00035833": [
+        "actual_delivery"
+      ],
+      "LOAD00076117": [],
+      "LOAD00010523": [],
+      "LOAD00009003": [
+        "truck_id",
+        "fuel_used_gallons"
+      ],
+      "LOAD00012999": [],
+      "LOAD00057494": [],
+      "LOAD00048633": [
+        "destination_city",
+        "scheduled_delivery"
+      ],
+      "LOAD00022030": [
+        "scheduled_delivery"
+      ],
+      "LOAD00045887": [],
+      "LOAD00069778": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00054012": [],
+      "LOAD00084246": [],
+      "LOAD00000483": [],
+      "LOAD00006178": [],
+      "LOAD00019595": [
+        "destination_city"
+      ],
+      "LOAD00048738": [
+        "actual_delivery",
+        "scheduled_delivery"
+      ],
+      "LOAD00041287": [],
+      "LOAD00066700": [],
+      "LOAD00036025": [],
+      "LOAD00065536": [
+        "scheduled_delivery",
+        "revenue_usd"
+      ],
+      "LOAD00001546": [],
+      "LOAD00083478": [],
+      "LOAD00003805": [],
+      "LOAD00071377": [],
+      "LOAD00045380": [
+        "revenue_usd"
+      ],
+      "LOAD00077654": [],
+      "LOAD00044982": [],
+      "LOAD00023405": [
+        "fuel_used_gallons",
+        "truck_id"
+      ],
+      "LOAD00005851": [],
+      "LOAD00022044": []
+    },
+    "test": {
+      "LOAD00015465": [],
+      "LOAD00031924": [
+        "actual_delivery",
+        "destination_city"
+      ],
+      "LOAD00049568": [],
+      "LOAD00047806": [
+        "truck_id"
+      ],
+      "LOAD00005128": [],
+      "LOAD00024652": [],
+      "LOAD00012567": [],
+      "LOAD00065699": [],
+      "LOAD00018886": [],
+      "LOAD00027204": [
+        "fuel_used_gallons"
+      ],
+      "LOAD00027744": [],
+      "LOAD00031742": [],
+      "LOAD00049980": [
+        "destination_city"
+      ],
+      "LOAD00039298": [],
+      "LOAD00033246": [
+        "truck_id",
+        "scheduled_delivery"
+      ],
+      "LOAD00074417": [],
+      "LOAD00014093": [],
+      "LOAD00068757": [],
+      "LOAD00054932": [],
+      "LOAD00018797": [],
+      "LOAD00042016": [
+        "truck_id",
+        "destination_city"
+      ],
+      "LOAD00022539": [],
+      "LOAD00031955": [
+        "truck_id",
+        "revenue_usd"
+      ],
+      "LOAD00084147": [],
+      "LOAD00006921": [],
+      "LOAD00040326": [],
+      "LOAD00060524": [],
+      "LOAD00083671": [],
+      "LOAD00021691": [
+        "origin_city",
+        "actual_delivery"
+      ],
+      "LOAD00005369": [],
+      "LOAD00046370": [],
+      "LOAD00004694": [],
+      "LOAD00014437": [],
+      "LOAD00039498": [],
+      "LOAD00031543": [],
+      "LOAD00071819": [],
+      "LOAD00061769": [],
+      "LOAD00064024": [
+        "destination_city"
+      ],
+      "LOAD00056736": [
+        "actual_delivery"
+      ],
+      "LOAD00052513": [],
+      "LOAD00073076": [],
+      "LOAD00040801": [
+        "truck_id"
+      ],
+      "LOAD00005401": [],
+      "LOAD00015866": [],
+      "LOAD00058847": [],
+      "LOAD00065660": [
+        "scheduled_delivery",
+        "truck_id"
+      ],
+      "LOAD00062798": [],
+      "LOAD00072031": [],
+      "LOAD00019259": [
+        "destination_city",
+        "revenue_usd"
+      ],
+      "LOAD00010268": [],
+      "LOAD00059231": [],
+      "LOAD00070566": [
+        "fuel_used_gallons",
+        "actual_delivery"
+      ],
+      "LOAD00025987": [
+        "origin_city"
+      ],
+      "LOAD00079324": [],
+      "LOAD00007022": [],
+      "LOAD00002674": [],
+      "LOAD00039488": [],
+      "LOAD00044722": [],
+      "LOAD00021443": [],
+      "LOAD00083968": [],
+      "LOAD00029817": [],
+      "LOAD00025772": [],
+      "LOAD00032156": [],
+      "LOAD00015970": [],
+      "LOAD00051579": [],
+      "LOAD00025004": [
+        "revenue_usd",
+        "scheduled_delivery"
+      ],
+      "LOAD00067514": [
+        "fuel_used_gallons",
+        "scheduled_delivery"
+      ],
+      "LOAD00014670": [],
+      "LOAD00042545": [],
+      "LOAD00016935": [
+        "destination_city"
+      ],
+      "LOAD00040624": [],
+      "LOAD00025702": [],
+      "LOAD00018459": [
+        "truck_id"
+      ],
+      "LOAD00013059": [],
+      "LOAD00044648": [],
+      "LOAD00071657": [
+        "truck_id"
+      ],
+      "LOAD00028528": [],
+      "LOAD00020650": [],
+      "LOAD00069843": [],
+      "LOAD00049546": [],
+      "LOAD00055908": [],
+      "LOAD00056272": [
+        "destination_city",
+        "fuel_used_gallons"
+      ],
+      "LOAD00084164": [],
+      "LOAD00052948": [],
+      "LOAD00082342": [],
+      "LOAD00072854": [],
+      "LOAD00014313": [],
+      "LOAD00068245": [],
+      "LOAD00081748": [],
+      "LOAD00023037": [
+        "revenue_usd"
+      ],
+      "LOAD00035877": [],
+      "LOAD00049557": [],
+      "LOAD00065918": [
+        "destination_city"
+      ],
+      "LOAD00053572": [
+        "truck_id",
+        "origin_city"
+      ],
+      "LOAD00004071": [],
+      "LOAD00072874": [
+        "revenue_usd"
+      ],
+      "LOAD00081212": [],
+      "LOAD00070813": [],
+      "LOAD00018017": [],
+      "LOAD00006322": []
+    }
+  },
+  "validation_summary": [
+    {
+      "split": "train",
+      "checked": 1600,
+      "passed": 1600,
+      "failed": 0,
+      "AB_pair_issues": 0
+    },
+    {
+      "split": "validation",
+      "checked": 200,
+      "passed": 200,
+      "failed": 0,
+      "AB_pair_issues": 0
+    },
+    {
+      "split": "test",
+      "checked": 200,
+      "passed": 200,
+      "failed": 0,
+      "AB_pair_issues": 0
+    }
+  ],
+  "overlap_summary": [
+    {
+      "pair": "train / validation",
+      "shared_loads": 0,
+      "identical_inputs": 0
+    },
+    {
+      "pair": "train / test",
+      "shared_loads": 0,
+      "identical_inputs": 0
+    },
+    {
+      "pair": "validation / test",
+      "shared_loads": 0,
+      "identical_inputs": 0
+    }
+  ],
+  "scope": "物流信息提取及已发生交付记录的延误分类",
+  "limitations": [
+    "来源为合成数据，文本由模板构建",
+    "尚未覆盖费用风险和完整经营推理",
+    "尚未使用独立真实业务文本验证泛化"
+  ]
+}
